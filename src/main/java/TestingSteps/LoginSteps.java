@@ -76,9 +76,9 @@ public void verify_the_pop_up_message() {
     System.out.println("Loggin Accepted");
 
 }
-//	@After
-//	public void end() {
-//		driver.close();
-////		driver.quit();
-//	}
+	@After
+	public void end() {
+		driver.close();
+//		driver.quit();
+	}
 }
