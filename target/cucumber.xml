@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="6" time="30.978">
+    <testcase classname="Login Feature" name="Multiple Value Test" time="5.502">
+        <system-out><![CDATA[Given Open the login in the chrome browser..................................passed
+When Enter login details "username201","<passwrod>".........................passed
+And I click the Login button................................................passed
+Then Verify the PopUp Message...............................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Login Feature" name="Multiple Value Test 2" time="4.944">
+        <system-out><![CDATA[Given Open the login in the chrome browser..................................passed
+When Enter login details "username202","<passwrod>".........................passed
+And I click the Login button................................................passed
+Then Verify the PopUp Message...............................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Login Feature" name="Multiple Value Test 3" time="5.004">
+        <system-out><![CDATA[Given Open the login in the chrome browser..................................passed
+When Enter login details "username203","<passwrod>".........................passed
+And I click the Login button................................................passed
+Then Verify the PopUp Message...............................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Register Feature" name="Multiple Value Test" time="5.055">
+        <system-out><![CDATA[Given Open the web page in the chrome browser...............................passed
+When Enter details "username201","abc@bcd.com","<passwrod>","name201".......passed
+And I click the Register button.............................................passed
+Then Verify the PopUp.......................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Register Feature" name="Multiple Value Test 2" time="5.106">
+        <system-out><![CDATA[Given Open the web page in the chrome browser...............................passed
+When Enter details "username202","abd@bcw.com","<passwrod>","name202".......passed
+And I click the Register button.............................................passed
+Then Verify the PopUp.......................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Register Feature" name="Multiple Value Test 3" time="5.134">
+        <system-out><![CDATA[Given Open the web page in the chrome browser...............................passed
+When Enter details "username203","abr@bcr.com","<passwrod>","name203".......passed
+And I click the Register button.............................................passed
+Then Verify the PopUp.......................................................passed
+]]></system-out>
+    </testcase>
+</testsuite>
