@@ -26,7 +26,7 @@ public class LoginSteps {
 	
 		
 
-		 System.setProperty("webdriver.chrome.driver","/home/akshath.agarwal/Downloads/Spring tool suite 4/chromedriver");		
+		System.setProperty("webdriver.chrome.driver","/home/sakshi.gupta3/Downloads/chromedriver_linux64/chromedriver");
 	      
 		 ChromeOptions options=new ChromeOptions();
 		 
@@ -71,11 +71,14 @@ public void verify_the_pop_up_message() {
 	Alert alert = driver.switchTo().alert(); // switch to alert
 	String alertMessage= driver.switchTo().alert().getText(); // capture alert message
     assertEquals("Logged In",alertMessage);
- 
+    // click on OK to accept with accept()
+    alert.accept();
+    System.out.println("Loggin Accepted");
+
 }
-	@After
-	public void end() {
-		driver.close();
-//		driver.quit();
-	}
+//	@After
+//	public void end() {
+//		driver.close();
+////		driver.quit();
+//	}
 }
