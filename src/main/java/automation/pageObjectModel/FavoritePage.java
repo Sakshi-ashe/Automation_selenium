@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 public class FavoritePage {
 	
 	public WebDriver ldriver;
-	public String str="";
 
 	public FavoritePage(WebDriver rdriver) {
 		ldriver = rdriver;
@@ -19,12 +18,24 @@ public class FavoritePage {
 	@FindBy(xpath = "//a[contains(.,'Favourite')]")
 	@CacheLookup
 	WebElement btnFavorite;
+	
+	@FindBy(xpath = "//a[contains(.,'Books')]")
+	@CacheLookup
+	WebElement btnBooks;
 
 	//@FindBy(xpath="//a[@href='/favourite']")
 	//private WebElement btnFavorite;
-	@FindBy(xpath="//div[@class='card-body' and contains(.,str)]//a[contains(.,'Remove From Favourite')]")
+	@FindBy(xpath="//div[@class='card-body' and contains(.,'ROCK')]//a[contains(.,'Remove From Favourite')]")
 	@CacheLookup
-	WebElement btnRemove;
+	WebElement btnRemoveROCK;
+	
+	@FindBy(xpath="//div[@class='card-body' and contains(.,'#NEVERAGAIN')]//a[contains(.,'Remove From Favourite')]")
+	@CacheLookup
+	WebElement btnRemoveNEVERAGAIN;
+	
+	@FindBy(xpath="//div[@class='card-body' and contains(.,'#NEVERAGAIN')]//button[contains(.,'Add To Favourite')]")
+	@CacheLookup
+	WebElement btnAddNEVERAGAIN;
 	
 	@FindBy(xpath="//a[contains(text(),'Logout')]")
 	private WebElement logout;
@@ -34,14 +45,26 @@ public class FavoritePage {
 	}
 	
 	public void clickFavourite() {
-		System.out.println("clickFavourite() run!");
 		this.btnFavorite.click();
 	}
 	
-	public void clickRemove(String arg) {
-		System.out.println("clickRemoveRockOFAges() run!");
-		str = arg;
-		this.btnRemove.click();
+	public void clickBooks() {
+		this.btnBooks.click();
+	}
+	
+	public void clickRemoveRock() {
+
+		this.btnRemoveROCK.click();
+	}
+	
+	public void clickRemoveNeverAgain() {
+
+		this.btnRemoveNEVERAGAIN.click();
+	}
+	
+	public void AddToFav(String arg) {
+		if(arg.equals("NEVERAGAIN"))
+			this.btnAddNEVERAGAIN.click();
 	}
 	
 	@FindBy(xpath="//input[@id='userName']")
@@ -54,10 +77,7 @@ public class FavoritePage {
 	private WebElement signInButton;
 	
 	
-//	Alert alert = driver.switchTo().alert(); // switch to alert
-//
-//	String alertMessage= driver.switchTo().alert().getText(); // capture alert message
-	
+
 	public void enterUserName(String username) {
 		this.username.sendKeys(username);
 	}
@@ -73,14 +93,21 @@ public class FavoritePage {
 
 
 	public boolean isRemovePresent(String arg) {
-	    try {
-	    	clickRemove(arg);
-	    	return true;
-	    } catch (org.openqa.selenium.NoSuchElementException e) {
-	        return false;
+	   try  {
+		   
+		   if(arg.equals("NEVERAGAIN"))
+	    	 clickRemoveNeverAgain();
+		   else if(arg.equals("ROCK"))
+			   clickRemoveRock();
+	       return true;
+	    } 
+   catch (	org.openqa.selenium.NoSuchElementException
+ e) {
+	        System.out.println("Not PRESENT !!!!!");
+	    	return false;
 	    }
 	}
-
+	
 	
 
 }
