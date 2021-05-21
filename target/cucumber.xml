@@ -1,8 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="38.732">
-    <testcase classname="Favorite" name="positive Remove From favorite" time="24.798">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="10" time="129.286">
+    <testcase classname="Register Feature" name="Multiple Value Test" time="6.512">
+        <system-out><![CDATA[Given Open the web page in the chrome browser...............................passed
+When Enter details "username201","abc@bcd.com","pass201","name201"..........passed
+And I click the Register button.............................................passed
+Then Verify the PopUp.......................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Register Feature" name="Multiple Value Test 2" time="5.911">
+        <system-out><![CDATA[Given Open the web page in the chrome browser...............................passed
+When Enter details "username202","abd@bcw.com","pass202","name202"..........passed
+And I click the Register button.............................................passed
+Then Verify the PopUp.......................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Register Feature" name="Multiple Value Test 3" time="5.989">
+        <system-out><![CDATA[Given Open the web page in the chrome browser...............................passed
+When Enter details "username203","abr@bcr.com","pass203","name203"..........passed
+And I click the Register button.............................................passed
+Then Verify the PopUp.......................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Login Feature" name="Multiple Value Test" time="5.96">
+        <system-out><![CDATA[Given Open the login in the chrome browser..................................passed
+When Enter login details "username201","pass201"............................passed
+And I click the Login button................................................passed
+Then Verify the PopUp Message...............................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Login Feature" name="Multiple Value Test 2" time="5.876">
+        <system-out><![CDATA[Given Open the login in the chrome browser..................................passed
+When Enter login details "username202","pass202"............................passed
+And I click the Login button................................................passed
+Then Verify the PopUp Message...............................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Login Feature" name="Multiple Value Test 3" time="5.96">
+        <system-out><![CDATA[Given Open the login in the chrome browser..................................passed
+When Enter login details "username203","pass203"............................passed
+And I click the Login button................................................passed
+Then Verify the PopUp Message...............................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Book" name="positive Add To favorite" time="24.262">
+        <system-out><![CDATA[Given open login in the chrome browser......................................passed
+When enter the login details "username201","pass201"........................passed
+And i click Login button....................................................passed
+Then verify PopUp Message...................................................passed
+And click on Book button in header..........................................passed
+Then page Url should be "http://localhost:4200/books".......................passed
+Then add book to favorite with title "ROCK OF AGES".........................passed
+And verify book added successfully..........................................passed
+Then Click on the logout....................................................passed
+Then page Url should be "http://localhost:4200/register"....................passed
+And close the browser.......................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Book" name="negative Add To favorite" time="22.272">
+        <system-out><![CDATA[Given open login in the chrome browser......................................passed
+When enter the login details "username201","pass201"........................passed
+And i click Login button....................................................passed
+Then verify PopUp Message...................................................passed
+And click on Book button in header..........................................passed
+Then page Url should be "http://localhost:4200/books".......................passed
+Then add book to favorite with title "ROCK OF AGES".........................passed
+And verify PopUp Message....................................................passed
+Then Click on the logout....................................................passed
+Then page Url should be "http://localhost:4200/register"....................passed
+And close the browser.......................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Favorite" name="positive Remove From favorite" time="24.037">
         <system-out><![CDATA[Given open the login in the chrome browser..................................passed
-When enter login details "user15","pass"....................................passed
+When enter login details "username201","pass201"............................passed
 And i click the Login button................................................passed
 Then verify the PopUp Message...............................................passed
 And click on Favorite button in header......................................passed
@@ -14,26 +84,18 @@ Then Page Url should be "http://localhost:4200/register"....................pass
 And close browser...........................................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="Favorite" name="negative Remove From favorite" time="13.689">
-        <failure message="" type="java.lang.AssertionError"><![CDATA[Given open the login in the chrome browser..................................passed
-When enter login details "user15","pass"....................................passed
+    <testcase classname="Favorite" name="negative Remove From favorite" time="22.156">
+        <system-out><![CDATA[Given open the login in the chrome browser..................................passed
+When enter login details "username201","pass201"............................passed
 And i click the Login button................................................passed
 Then verify the PopUp Message...............................................passed
 And click on Favorite button in header......................................passed
+Then verify the PopUp Message...............................................passed
 Then Page Url should be "http://localhost:4200/favourite"...................passed
-And verify book with title "ROCK OF AGES" already absent....................failed
-Then Click on logout........................................................skipped
-Then Page Url should be "http://localhost:4200/register"....................skipped
-And close browser...........................................................skipped
-
-StackTrace:
-java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:87)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertFalse(Assert.java:65)
-	at org.junit.Assert.assertFalse(Assert.java:75)
-	at TestingSteps.FavoriteSteps.verify_book_with_title_already_absent(FavoriteSteps.java:113)
-	at ✽.verify book with title "ROCK OF AGES" already absent(file:///home/sakshi.gupta3/Pictures/v6/capstone_automation/src/main/resources/Features/Favorite.feature:27)
-]]></failure>
+And verify book with title "ROCK OF AGES" already absent....................passed
+Then Click on logout........................................................passed
+Then Page Url should be "http://localhost:4200/register"....................passed
+And close browser...........................................................passed
+]]></system-out>
     </testcase>
 </testsuite>

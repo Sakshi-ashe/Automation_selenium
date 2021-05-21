@@ -15,7 +15,7 @@ Feature: Favorite
 
     Examples: 
       | userName | password | title        |
-      | user15   | pass     | ROCK OF AGES |
+      | username201   | pass201     | ROCK OF AGES |
 
   Scenario Outline: negative Remove From favorite
     Given open the login in the chrome browser
@@ -23,6 +23,7 @@ Feature: Favorite
     And i click the Login button
     Then verify the PopUp Message.
     And click on Favorite button in header
+    Then verify the PopUp Message.
     Then Page Url should be "http://localhost:4200/favourite"
     And verify book with title "<title>" already absent
     Then Click on logout
@@ -31,4 +32,4 @@ Feature: Favorite
 
     Examples: 
       | userName | password | title        |
-      | user15   | pass     | ROCK OF AGES |
+      | username201  | pass201     | ROCK OF AGES |

@@ -10,17 +10,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 
-import automation.pageObjectModel.FavoritePage;
+import automation.pageObjectModel.BookPage;
 import automation.pageObjectModel.Login;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class FavoriteSteps {
+public class BookSteps {
 	
 	WebDriver driver;
-	public FavoritePage fp ;
+	public BookPage bp ;
 	String url="http://localhost:4200/register";
 
 
@@ -43,29 +43,29 @@ public class FavoriteSteps {
 	
 }
 	
-	@Given("open the login in the chrome browser")
+	@Given("open login in the chrome browser")
 	public void open_the_login_in_the_chrome_browser() {
 	    // Write code here that turns the phrase above into concrete actions
 	   driver.get(url);
-	   fp=PageFactory.initElements(driver,FavoritePage.class);
-	   fp.clickSignInButton();
+	   bp=PageFactory.initElements(driver,BookPage.class);
+	   bp.clickSignInButton();
 	}
 
-	@When("enter login details {string},{string}")
+	@When("enter the login details {string},{string}")
 	public void enter_login_details(String string, String string2) {
 	    // Write code here that turns the phrase above into concrete actions
-	  fp.enterUserName(string);
-	  fp.enterPassword(string2);
+	  bp.enterUserName(string);
+	  bp.enterPassword(string2);
 	}
 
-	@When("i click the Login button")
+	@When("i click Login button")
 	public void i_click_the_login_button() throws InterruptedException {
 	    // Write code here that turns the phrase above into concrete actions
-	    fp.clickLoginButon();
+	    bp.clickLoginButon();
 		Thread.sleep(3000);
 	}
 
-	@Then("verify the PopUp Message.")
+	@Then("verify PopUp Message.")
 	public void verify_the_pop_up_message() {
 	    // Write code here that turns the phrase above into concrete actions
 		Alert alert = driver.switchTo().alert(); // switch to alert
@@ -73,12 +73,12 @@ public class FavoriteSteps {
 
 	}
 
-	@Then("click on Favorite button in header")
-	public void click_on_favorite_button_in_header() {
-		fp.clickFavourite();
+	@Then("click on Book button in header")
+	public void click_on_Book_button_in_header() {
+		bp.clickBook();
 	}
 
-	@Then("Page Url should be {string}")
+	@Then("page Url should be {string}")
 	public void page_url_should_be(String arg1) throws InterruptedException {
 	    System.out.println("#####"+driver.getCurrentUrl());
 	    Thread.sleep(2000);
@@ -95,24 +95,25 @@ public class FavoriteSteps {
 		Thread.sleep(3000);
 	}
 
-	@Then("remove book from favorite with title {string}")
+	
+	@Then("add book to favorite with title {string}")
 	public void remove_book_from_favorite_with_title(String string) throws InterruptedException {
 			Thread.sleep(2000);
-			//System.out.println(fp.isRemovePresent(string));
-			assertTrue(fp.isRemovePresent(string));
-			//fp.clickRemoveRockOFAges();
-	}
+			System.out.println(bp.isAddRocksBookPresent(string));
+			assertTrue(bp.isAddRocksBookPresent(string));	
+			}
 	
-	@Then("verify book with title {string} already absent")
-	public void verify_book_with_title_already_absent(String string) throws InterruptedException {
+	
+	@Then("verify book with title {string} already present")
+	public void verify_book_with_title_already_present(String string) throws InterruptedException {
 		Thread.sleep(2000);
-		assertFalse(fp.isRemovePresent(string));
-
+		assertTrue(bp.isAddRocksBookPresent(string));
+		
 	}
 
 
-	@Then("verify book removed successfully")
-	public void verify_book_removed_successfully() throws InterruptedException {
+	@Then("verify book added successfully")
+	public void verify_book_added_successfully() throws InterruptedException {
 		Thread.sleep(2000);
 
 		Alert alert = driver.switchTo().alert(); // switch to alert
@@ -123,11 +124,11 @@ public class FavoriteSteps {
 
 
 
-	@Then("Click on logout")
+	@Then("Click on the logout")
 	public void click_on_logout() throws InterruptedException {
 		Thread.sleep(3000);
 
-		fp.clickLogout();
+		bp.clickLogout();
 		
 		Alert alert = driver.switchTo().alert(); // switch to alert
 		String alertMessage= driver.switchTo().alert().getText(); // capture alert message
@@ -138,7 +139,7 @@ public class FavoriteSteps {
 
 	}
 
-	@Then("close browser")
+	@Then("close the browser")
 	public void close_browser() {
 		System.out.println("********* Closing browser **************");
 		driver.quit();

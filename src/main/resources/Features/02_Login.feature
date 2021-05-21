@@ -16,22 +16,18 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-
-
-
  @tag
-Feature: Register Feature
-  @tag1
+Feature: Login Feature
+  @tag2
   Scenario Outline: Multiple Value Test
-    Given Open the web page in the chrome browser
-    When Enter details "<userName>","<email>","<passwrod>","<name>"
-    And I click the Register button
-    Then Verify the PopUp.
+    Given Open the login in the chrome browser
+    When Enter login details "<userName>","<password>"
+    And I click the Login button
+    Then Verify the PopUp Message.
 
     Examples: 
-  |userName    | email       | password | name    |
-  |username201 | abc@bcd.com | pass201  | name201 |
-  |username202 | abd@bcw.com | pass202  | name202 |
-  |username203 | abr@bcr.com | pass203  | name203 |
+  |userName    | password | 
+  |username201 | pass201  | 
+  |username202 | pass202  |
+  |username203 | pass203  | 
   
- 

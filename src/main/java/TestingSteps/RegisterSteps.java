@@ -27,7 +27,7 @@ public class RegisterSteps {
 	
 		
 
-		System.setProperty("webdriver.chrome.driver","/home/sakshi.gupta3/Downloads/chromedriver_linux64/chromedriver");
+		 System.setProperty("webdriver.chrome.driver", "/home/purvi.gupta/Downloads/chromedriver_linux64/chromedriver");		
 	      
 		 ChromeOptions options=new ChromeOptions();
 		 
@@ -79,7 +79,6 @@ public class RegisterSteps {
 	}
 	@After
 	public void endphase() {
-	    driver.close();
-//		driver.quit();
+	driver.quit();
 	}
 }
