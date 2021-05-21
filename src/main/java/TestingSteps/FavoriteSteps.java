@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import automation.pageObjectModel.FavoritePage;
 import automation.pageObjectModel.Login;
@@ -29,7 +31,7 @@ public class FavoriteSteps {
 	
 		
 
-		 System.setProperty("webdriver.chrome.driver", "/home/purvi.gupta/Downloads/chromedriver_linux64/chromedriver");		
+		System.setProperty("webdriver.chrome.driver","/home/sakshi.gupta3/Downloads/chromedriver_linux64/chromedriver");
 	      
 		 ChromeOptions options=new ChromeOptions();
 		 
@@ -69,7 +71,11 @@ public class FavoriteSteps {
 	public void verify_the_pop_up_message() {
 	    // Write code here that turns the phrase above into concrete actions
 		Alert alert = driver.switchTo().alert(); // switch to alert
+		String alertMessage= driver.switchTo().alert().getText(); // capture alert message
+	    assertEquals("Logged In",alertMessage);
+	    // click on OK to accept with accept()
 	    alert.accept();
+	    System.out.println("Loggin Accepted");
 
 	}
 
@@ -98,25 +104,49 @@ public class FavoriteSteps {
 	@Then("remove book from favorite with title {string}")
 	public void remove_book_from_favorite_with_title(String string) throws InterruptedException {
 			Thread.sleep(2000);
-			//System.out.println(fp.isRemovePresent(string));
 			assertTrue(fp.isRemovePresent(string));
-			//fp.clickRemoveRockOFAges();
 	}
 	
 	@Then("verify book with title {string} already absent")
 	public void verify_book_with_title_already_absent(String string) throws InterruptedException {
 		Thread.sleep(2000);
-		assertFalse(fp.isRemovePresent(string));
+		Alert alert = driver.switchTo().alert(); // switch to alert
+		String alertMessage= driver.switchTo().alert().getText(); // capture alert message
+	    assertEquals("No books added",alertMessage);
+	      // click on OK to accept with accept()
+	    alert.accept();
+		System.out.println(fp.isRemovePresent(string));
 
 	}
 
 
 	@Then("verify book removed successfully")
 	public void verify_book_removed_successfully() throws InterruptedException {
-		Thread.sleep(2000);
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		try {
+		    wait.until(ExpectedConditions.alertIsPresent());
+		    Alert alert1 = driver.switchTo().alert();
+			String alertMessage= driver.switchTo().alert().getText(); // capture alert message
+		    assertEquals("removed successfully",alertMessage);
 
-		Alert alert = driver.switchTo().alert(); // switch to alert
-	    alert.accept();
+		    Thread.sleep(3000);
+		    alert1.accept();
+		} catch (Exception e) {
+		    // No alert exists
+		}
+
+		try {
+		    wait.until(ExpectedConditions.alertIsPresent());
+		    Alert alert2 = driver.switchTo().alert();
+			String alertMessage= driver.switchTo().alert().getText(); // capture alert message
+		    assertEquals("No books added",alertMessage);
+
+		    Thread.sleep(3000);
+		    alert2.accept();
+		} catch (Exception e) {
+		    // No alert exists
+		}
+		
 
 	}
 	
@@ -131,10 +161,9 @@ public class FavoriteSteps {
 		
 		Alert alert = driver.switchTo().alert(); // switch to alert
 		String alertMessage= driver.switchTo().alert().getText(); // capture alert message
-	    assertEquals("Logged out",alertMessage);
+		assertEquals("Logged out",alertMessage);
 	    // click on OK to accept with accept()
 	    alert.accept();
-	    System.out.println("Loggin Accepted");
 
 	}
 
@@ -142,6 +171,20 @@ public class FavoriteSteps {
 	public void close_browser() {
 		System.out.println("********* Closing browser **************");
 		driver.quit();
+	}
+	
+	
+	@Then("click on Books button in header")
+	public void click_on_books_button_in_header() {
+		fp.clickBooks();
+	}
+
+	@Then("add to favorite {string}")
+	public void add_to_favorite(String string) {
+		fp.AddToFav(string); 
+		Alert alert = driver.switchTo().alert(); // switch to alert
+		alert.accept();
+
 	}
 
 }
