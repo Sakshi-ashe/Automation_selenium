@@ -18,7 +18,7 @@ Feature: Favorite
 
     Examples: 
       | userName | password | AddBook | title        |
-      | user15   | pass     | NEVERAGAIN | NEVERAGAIN |
+      | username201   | pass201     | NEVERAGAIN | NEVERAGAIN |
 
   Scenario Outline: negative Remove From favorite
     Given open the login in the chrome browser
@@ -33,4 +33,4 @@ Feature: Favorite
 
     Examples: 
       | userName | password | title        |
-      | user15   | pass     | ROCK |
+      | username201   | pass201     | ROCK |
