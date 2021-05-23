@@ -29,7 +29,7 @@ public class BookSteps {
 	
 		
 
-		 System.setProperty("webdriver.chrome.driver", "/home/purvi.gupta/Downloads/chromedriver_linux64/chromedriver");		
+		System.setProperty("webdriver.chrome.driver","/home/sakshi.gupta3/Downloads/chromedriver_linux64/chromedriver");
 	      
 		 ChromeOptions options=new ChromeOptions();
 		 
@@ -66,7 +66,9 @@ public class BookSteps {
 	}
 
 	@Then("verify PopUp Message.")
-	public void verify_the_pop_up_message() {
+	public void verify_the_pop_up_message() throws InterruptedException {
+		Thread.sleep(2000);
+
 	    // Write code here that turns the phrase above into concrete actions
 		Alert alert = driver.switchTo().alert(); // switch to alert
 	    alert.accept();
@@ -99,7 +101,7 @@ public class BookSteps {
 	@Then("add book to favorite with title {string}")
 	public void remove_book_from_favorite_with_title(String string) throws InterruptedException {
 			Thread.sleep(2000);
-			System.out.println(bp.isAddRocksBookPresent(string));
+			//System.out.println(bp.isAddRocksBookPresent(string));
 			assertTrue(bp.isAddRocksBookPresent(string));	
 			}
 	
@@ -115,7 +117,6 @@ public class BookSteps {
 	@Then("verify book added successfully")
 	public void verify_book_added_successfully() throws InterruptedException {
 		Thread.sleep(2000);
-
 		Alert alert = driver.switchTo().alert(); // switch to alert
 	    alert.accept();
 

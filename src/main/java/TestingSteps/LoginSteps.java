@@ -26,7 +26,7 @@ public class LoginSteps {
 	
 		
 
-		 System.setProperty("webdriver.chrome.driver", "/home/purvi.gupta/Downloads/chromedriver_linux64/chromedriver");		
+		System.setProperty("webdriver.chrome.driver","/home/sakshi.gupta3/Downloads/chromedriver_linux64/chromedriver");
 	      
 		 ChromeOptions options=new ChromeOptions();
 		 

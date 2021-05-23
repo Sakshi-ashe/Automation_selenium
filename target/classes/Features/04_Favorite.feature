@@ -5,6 +5,9 @@ Feature: Favorite
     When enter login details "<userName>","<password>"
     And i click the Login button
     Then verify the PopUp Message.
+    And click on Books button in header
+    Then Page Url should be "http://localhost:4200/books"
+    And add to favorite "<AddBook>"
     And click on Favorite button in header
     Then Page Url should be "http://localhost:4200/favourite"
     Then remove book from favorite with title "<title>"
@@ -14,8 +17,8 @@ Feature: Favorite
     And close browser
 
     Examples: 
-      | userName | password | title        |
-      | username201   | pass201     | ROCK OF AGES |
+      | userName | password | AddBook | title        |
+      | username202   | pass202     | NEVERAGAIN | NEVERAGAIN |
 
   Scenario Outline: negative Remove From favorite
     Given open the login in the chrome browser
@@ -23,8 +26,6 @@ Feature: Favorite
     And i click the Login button
     Then verify the PopUp Message.
     And click on Favorite button in header
-    Then verify the PopUp Message.
-    Then Page Url should be "http://localhost:4200/favourite"
     And verify book with title "<title>" already absent
     Then Click on logout
     Then Page Url should be "http://localhost:4200/register"
@@ -32,4 +33,4 @@ Feature: Favorite
 
     Examples: 
       | userName | password | title        |
-      | username201  | pass201     | ROCK OF AGES |
+      | username202   | pass202     | ROCK |
