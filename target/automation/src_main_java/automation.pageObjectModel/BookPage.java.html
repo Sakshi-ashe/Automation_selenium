@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>BookPage.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">automation (25-May-2021 10:37:21 am)</a> &gt; <a href="../../index.html" class="el_group">automation</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">automation.pageObjectModel</a> &gt; <span class="el_source">BookPage.java</span></div><h1>BookPage.java</h1><pre class="source lang-java linenums">package automation.pageObjectModel;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class BookPage {
+	
+	public WebDriver ldriver;
+<span class="fc" id="L12">	public String str=&quot;&quot;;</span>
+
+<span class="fc" id="L14">	public BookPage(WebDriver rdriver) {</span>
+<span class="fc" id="L15">		ldriver = rdriver;</span>
+<span class="fc" id="L16">		PageFactory.initElements(rdriver, this);</span>
+<span class="fc" id="L17">	}</span>
+
+	@FindBy(xpath = &quot;//a[contains(text(),'Books')]&quot;)
+	@CacheLookup
+	WebElement btnBook;
+
+	//@FindBy(xpath=&quot;//a[@href='/favourite']&quot;)
+	//private WebElement btnFavorite;
+	@FindBy(xpath=&quot;//body/app-root[1]/div[1]/app-book-list[1]/div[1]/div[1]/div[1]/div[1]/div[10]/div[1]/div[1]/button[1]&quot;)
+	@CacheLookup
+	WebElement btnAddRocksBook;
+	
+	
+	@FindBy(xpath=&quot;//a[contains(text(),'Logout')]&quot;)
+	private WebElement logout;
+	
+	public void clickLogout() {
+<span class="fc" id="L34">		this.logout.click();</span>
+<span class="fc" id="L35">	}</span>
+	
+	public void clickBook() {
+<span class="fc" id="L38">		System.out.println(&quot;clickFavourite() run!&quot;);</span>
+<span class="fc" id="L39">		this.btnBook.click();</span>
+<span class="fc" id="L40">	}</span>
+	
+	
+	public void clickAddRocksBook(String arg) {
+<span class="fc" id="L44">		System.out.println(&quot;clickAddRocksBook() run!&quot;);</span>
+<span class="fc" id="L45">		str = arg;</span>
+<span class="fc" id="L46">		this.btnAddRocksBook.click();</span>
+<span class="fc" id="L47">	}</span>
+
+	
+	@FindBy(xpath=&quot;//input[@id='userName']&quot;)
+	private WebElement username;
+	@FindBy(xpath=&quot;//input[@id='psw']&quot;)
+	private WebElement password;
+	@FindBy(xpath=&quot;//button[contains(text(),'Login')]&quot;)
+	private WebElement loginButton;
+	@FindBy(xpath=&quot;//button[contains(text(),'Sign in')]&quot;)
+	private WebElement signInButton;
+	
+	
+//	Alert alert = driver.switchTo().alert(); // switch to alert
+//
+//	String alertMessage= driver.switchTo().alert().getText(); // capture alert message
+	
+	public void enterUserName(String username) {
+<span class="fc" id="L65">		this.username.sendKeys(username);</span>
+<span class="fc" id="L66">	}</span>
+	public void enterPassword(String password) {
+<span class="fc" id="L68">		this.password.sendKeys(password);</span>
+<span class="fc" id="L69">	}</span>
+	public void clickLoginButon() {
+<span class="fc" id="L71">		this.loginButton.click();</span>
+<span class="fc" id="L72">	}</span>
+	public void clickSignInButton() {
+<span class="fc" id="L74">		this.signInButton.click();</span>
+<span class="fc" id="L75">	}</span>
+
+
+	public boolean isAddRocksBookPresent(String arg) {
+	    try {
+<span class="fc" id="L80">	    	clickAddRocksBook(arg);</span>
+<span class="fc" id="L81">	    	return true;</span>
+<span class="nc" id="L82">	    } catch (org.openqa.selenium.NoSuchElementException e) {</span>
+<span class="nc" id="L83">	        return false;</span>
+	    }
+	}
+	
+
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span>automation (25-May-2021 10:37:21 am)</div></body></html>

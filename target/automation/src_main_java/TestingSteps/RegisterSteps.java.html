@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>RegisterSteps.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">automation (25-May-2021 10:37:21 am)</a> &gt; <a href="../../index.html" class="el_group">automation</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">TestingSteps</a> &gt; <span class="el_source">RegisterSteps.java</span></div><h1>RegisterSteps.java</h1><pre class="source lang-java linenums">package TestingSteps;
+
+import static org.junit.Assert.assertEquals;
+
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.PageFactory;
+
+import automation.pageObjectModel.RegisterPage;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+<span class="fc" id="L19">public class RegisterSteps {</span>
+	
+	
+	WebDriver driver;
+<span class="fc" id="L23">	RegisterPage rp=new RegisterPage();	</span>
+<span class="fc" id="L24">	  String url=&quot;http://localhost:4200/register&quot;;</span>
+	@Before
+	public void configuration() {
+	
+		
+
+<span class="fc" id="L30">		System.setProperty(&quot;webdriver.chrome.driver&quot;,&quot;/home/sakshi.gupta3/Downloads/chromedriver_linux64/chromedriver&quot;);</span>
+	      
+<span class="fc" id="L32">		 ChromeOptions options=new ChromeOptions();</span>
+		 
+<span class="fc" id="L34">		 options.addArguments(&quot;start-maximized&quot;);</span>
+		 
+<span class="fc" id="L36">		 driver= new ChromeDriver(options);</span>
+		
+		
+		 
+		// WebDriverWait wait=new WebDriverWait(driver,10);
+		 
+	
+<span class="fc" id="L43">}</span>
+	
+	
+	@Given(&quot;Open the web page in the chrome browser&quot;)
+	public void open_the_web_page_in_the_chrome_browser() {
+	    // Write code here that turns the phrase above into concrete actions
+<span class="fc" id="L49">		driver.get(url);</span>
+<span class="fc" id="L50">		rp=PageFactory.initElements(driver,RegisterPage.class);</span>
+	 
+<span class="fc" id="L52">	}</span>
+
+	@When(&quot;Enter details {string},{string},{string},{string}&quot;)
+	public void enter_details(String string, String string2, String string3, String string4) {
+	    // Write code here that turns the phrase above into concrete actions
+<span class="fc" id="L57">  rp.enterUserName(string);</span>
+<span class="fc" id="L58">  rp.enterEmail(string2);</span>
+<span class="fc" id="L59">  rp.enterPassword(string3);</span>
+<span class="fc" id="L60">  rp.enterName(string4);</span>
+  
+<span class="fc" id="L62">	}</span>
+
+	@When(&quot;I click the Register button&quot;)
+	public void i_click_the_register_button() throws InterruptedException {
+	    // Write code here that turns the phrase above into concrete actions
+<span class="fc" id="L67">		rp.clickRegister();</span>
+<span class="fc" id="L68">		Thread.sleep(3000);</span>
+	
+<span class="fc" id="L70">	}</span>
+
+	@Then(&quot;Verify the PopUp.&quot;)
+	public void verify_the_pop_up() {
+	    // Write code here that turns the phrase above into concrete actions
+<span class="fc" id="L75">		Alert alert = driver.switchTo().alert(); // switch to alert</span>
+<span class="fc" id="L76">		String alertMessage= driver.switchTo().alert().getText(); // capture alert message</span>
+<span class="fc" id="L77">        assertEquals(&quot;Username already exists!&quot;,alertMessage);</span>
+	 
+<span class="fc" id="L79">	}</span>
+	@After
+	public void endphase() {
+<span class="fc" id="L82">	driver.quit();</span>
+<span class="fc" id="L83">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span>automation (25-May-2021 10:37:21 am)</div></body></html>

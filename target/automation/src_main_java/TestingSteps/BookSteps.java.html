@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>BookSteps.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">automation (25-May-2021 10:37:21 am)</a> &gt; <a href="../../index.html" class="el_group">automation</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">TestingSteps</a> &gt; <span class="el_source">BookSteps.java</span></div><h1>BookSteps.java</h1><pre class="source lang-java linenums">package TestingSteps;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.PageFactory;
+
+import automation.pageObjectModel.BookPage;
+import automation.pageObjectModel.Login;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+<span class="fc" id="L20">public class BookSteps {</span>
+	
+	WebDriver driver;
+	public BookPage bp ;
+<span class="fc" id="L24">	String url=&quot;http://localhost:4200/register&quot;;</span>
+
+
+	@Before
+	public void configuration() {
+	
+		
+
+<span class="fc" id="L32">		System.setProperty(&quot;webdriver.chrome.driver&quot;,&quot;/home/sakshi.gupta3/Downloads/chromedriver_linux64/chromedriver&quot;);</span>
+	      
+<span class="fc" id="L34">		 ChromeOptions options=new ChromeOptions();</span>
+		 
+<span class="fc" id="L36">		 options.addArguments(&quot;start-maximized&quot;);</span>
+		 
+<span class="fc" id="L38">		 driver= new ChromeDriver(options);</span>
+		
+		 
+		// WebDriverWait wait=new WebDriverWait(driver,10);
+		 
+	
+<span class="fc" id="L44">}</span>
+	
+	@Given(&quot;open login in the chrome browser&quot;)
+	public void open_the_login_in_the_chrome_browser() {
+	    // Write code here that turns the phrase above into concrete actions
+<span class="fc" id="L49">	   driver.get(url);</span>
+<span class="fc" id="L50">	   bp=PageFactory.initElements(driver,BookPage.class);</span>
+<span class="fc" id="L51">	   bp.clickSignInButton();</span>
+<span class="fc" id="L52">	}</span>
+
+	@When(&quot;enter the login details {string},{string}&quot;)
+	public void enter_login_details(String string, String string2) {
+	    // Write code here that turns the phrase above into concrete actions
+<span class="fc" id="L57">	  bp.enterUserName(string);</span>
+<span class="fc" id="L58">	  bp.enterPassword(string2);</span>
+<span class="fc" id="L59">	}</span>
+
+	@When(&quot;i click Login button&quot;)
+	public void i_click_the_login_button() throws InterruptedException {
+	    // Write code here that turns the phrase above into concrete actions
+<span class="fc" id="L64">	    bp.clickLoginButon();</span>
+<span class="fc" id="L65">		Thread.sleep(3000);</span>
+<span class="fc" id="L66">	}</span>
+
+	@Then(&quot;verify PopUp Message.&quot;)
+	public void verify_the_pop_up_message() throws InterruptedException {
+<span class="fc" id="L70">		Thread.sleep(2000);</span>
+
+	    // Write code here that turns the phrase above into concrete actions
+<span class="fc" id="L73">		Alert alert = driver.switchTo().alert(); // switch to alert</span>
+<span class="fc" id="L74">	    alert.accept();</span>
+
+<span class="fc" id="L76">	}</span>
+
+	@Then(&quot;click on Book button in header&quot;)
+	public void click_on_Book_button_in_header() {
+<span class="fc" id="L80">		bp.clickBook();</span>
+<span class="fc" id="L81">	}</span>
+
+	@Then(&quot;page Url should be {string}&quot;)
+	public void page_url_should_be(String arg1) throws InterruptedException {
+<span class="fc" id="L85">	    System.out.println(&quot;#####&quot;+driver.getCurrentUrl());</span>
+<span class="fc" id="L86">	    Thread.sleep(2000);</span>
+
+		
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">		if(driver.getCurrentUrl().contains(arg1))</span>
+<span class="fc" id="L90">		{	assertTrue(true);</span>
+
+<span class="fc" id="L92">		}</span>
+		else
+<span class="nc" id="L94">		{	driver.close();</span>
+<span class="nc" id="L95">			assertTrue(false);</span>
+		}
+<span class="fc" id="L97">		Thread.sleep(3000);</span>
+<span class="fc" id="L98">	}</span>
+
+	
+	@Then(&quot;add book to favorite with title {string}&quot;)
+	public void remove_book_from_favorite_with_title(String string) throws InterruptedException {
+<span class="fc" id="L103">			Thread.sleep(2000);</span>
+			//System.out.println(bp.isAddRocksBookPresent(string));
+<span class="fc" id="L105">			assertTrue(bp.isAddRocksBookPresent(string));	</span>
+<span class="fc" id="L106">			}</span>
+	
+	
+	@Then(&quot;verify book with title {string} already present&quot;)
+	public void verify_book_with_title_already_present(String string) throws InterruptedException {
+<span class="nc" id="L111">		Thread.sleep(2000);</span>
+<span class="nc" id="L112">		assertTrue(bp.isAddRocksBookPresent(string));</span>
+		
+<span class="nc" id="L114">	}</span>
+
+
+	@Then(&quot;verify book added successfully&quot;)
+	public void verify_book_added_successfully() throws InterruptedException {
+<span class="fc" id="L119">		Thread.sleep(2000);</span>
+<span class="fc" id="L120">		Alert alert = driver.switchTo().alert(); // switch to alert</span>
+<span class="fc" id="L121">	    alert.accept();</span>
+
+<span class="fc" id="L123">	}</span>
+	
+
+
+
+	@Then(&quot;Click on the logout&quot;)
+	public void click_on_logout() throws InterruptedException {
+<span class="fc" id="L130">		Thread.sleep(3000);</span>
+
+<span class="fc" id="L132">		bp.clickLogout();</span>
+		
+<span class="fc" id="L134">		Alert alert = driver.switchTo().alert(); // switch to alert</span>
+<span class="fc" id="L135">		String alertMessage= driver.switchTo().alert().getText(); // capture alert message</span>
+<span class="fc" id="L136">	    assertEquals(&quot;Logged out&quot;,alertMessage);</span>
+	    // click on OK to accept with accept()
+<span class="fc" id="L138">	    alert.accept();</span>
+<span class="fc" id="L139">	    System.out.println(&quot;Loggin Accepted&quot;);</span>
+
+<span class="fc" id="L141">	}</span>
+
+	@Then(&quot;close the browser&quot;)
+	public void close_browser() {
+<span class="fc" id="L145">		System.out.println(&quot;********* Closing browser **************&quot;);</span>
+<span class="fc" id="L146">		driver.quit();</span>
+<span class="fc" id="L147">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span>automation (25-May-2021 10:37:21 am)</div></body></html>

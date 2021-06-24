@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="10" time="133.721">
-    <testcase classname="Register Feature" name="Multiple Value Test" time="5.762">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="10" time="134.136">
+    <testcase classname="Register Feature" name="Multiple Value Test" time="5.871">
         <system-out><![CDATA[Given Open the web page in the chrome browser...............................passed
 When Enter details "username201","abc@bcd.com","pass201","name201"..........passed
 And I click the Register button.............................................passed
 Then Verify the PopUp.......................................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="Register Feature" name="Multiple Value Test 2" time="5.215">
+    <testcase classname="Register Feature" name="Multiple Value Test 2" time="5.224">
         <system-out><![CDATA[Given Open the web page in the chrome browser...............................passed
 When Enter details "username202","abd@bcw.com","pass202","name202"..........passed
 And I click the Register button.............................................passed
 Then Verify the PopUp.......................................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="Register Feature" name="Multiple Value Test 3" time="5.249">
+    <testcase classname="Register Feature" name="Multiple Value Test 3" time="5.209">
         <system-out><![CDATA[Given Open the web page in the chrome browser...............................passed
 When Enter details "username203","abr@bcr.com","pass203","name203"..........passed
 And I click the Register button.............................................passed
 Then Verify the PopUp.......................................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="Login Feature" name="Multiple Value Test" time="5.19">
+    <testcase classname="Login Feature" name="Multiple Value Test" time="5.11">
         <system-out><![CDATA[Given Open the login in the chrome browser..................................passed
 When Enter login details "username201","pass201"............................passed
 And I click the Login button................................................passed
 Then Verify the PopUp Message...............................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="Login Feature" name="Multiple Value Test 2" time="5.18">
+    <testcase classname="Login Feature" name="Multiple Value Test 2" time="5.125">
         <system-out><![CDATA[Given Open the login in the chrome browser..................................passed
 When Enter login details "username202","pass202"............................passed
 And I click the Login button................................................passed
 Then Verify the PopUp Message...............................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="Login Feature" name="Multiple Value Test 3" time="5.343">
+    <testcase classname="Login Feature" name="Multiple Value Test 3" time="5.286">
         <system-out><![CDATA[Given Open the login in the chrome browser..................................passed
 When Enter login details "username203","pass203"............................passed
 And I click the Login button................................................passed
 Then Verify the PopUp Message...............................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="Book" name="positive Add To favorite" time="25.612">
+    <testcase classname="Book" name="positive Add To favorite" time="26.011">
         <system-out><![CDATA[Given open login in the chrome browser......................................passed
 When enter the login details "username201","pass201"........................passed
 And i click Login button....................................................passed
@@ -56,7 +56,7 @@ Then page Url should be "http://localhost:4200/register"....................pass
 And close the browser.......................................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="Book" name="negative Add To favorite" time="25.662">
+    <testcase classname="Book" name="negative Add To favorite" time="25.758">
         <system-out><![CDATA[Given open login in the chrome browser......................................passed
 When enter the login details "username201","pass201"........................passed
 And i click Login button....................................................passed
@@ -70,7 +70,7 @@ Then page Url should be "http://localhost:4200/register"....................pass
 And close the browser.......................................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="Favorite" name="positive Remove From favorite" time="34.294">
+    <testcase classname="Favorite" name="positive Remove From favorite" time="34.267">
         <system-out><![CDATA[Given open the login in the chrome browser..................................passed
 When enter login details "username202","pass202"............................passed
 And i click the Login button................................................passed
@@ -87,7 +87,7 @@ Then Page Url should be "http://localhost:4200/register"....................pass
 And close browser...........................................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="Favorite" name="negative Remove From favorite" time="15.968">
+    <testcase classname="Favorite" name="negative Remove From favorite" time="16.007">
         <system-out><![CDATA[Given open the login in the chrome browser..................................passed
 When enter login details "username202","pass202"............................passed
 And i click the Login button................................................passed
